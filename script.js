@@ -79,13 +79,16 @@ const whereAmI = async function(){
      try {
       const pos = await getPosition()
       const {latitude:lat, longitude:long} = pos.coords;
-       const resGeo = await fetch(`https://geocode.xyz/${lat},${long}?geoit=json&auth=326939512484754880489x83325`)
-       if(!resGeo.ok) throw new Error('Problem fetching data')
+       const resGeo = await fetch(`https://geocode.xyz/${lat},${long}?geoit=json&auth=786157954621776117703x8160`)
+       if(!resGeo.ok) throw new Error('Problem fetching data');
+       
 
       const dataGeo = await resGeo.json()
+      // if(!dataGeo.ok) throw new Error('Problem fetching data');
+      console.log(dataGeo)
 
-   const res = await fetch(`https://restcountries.com/v3.1/name/${dataGeo.country}`)
-   if(!res.ok) throw new Error('Problem fetching data')
+      const res = await fetch(`https://restcountries.com/v3.1/name/${dataGeo.country}`)
+      if(!res.ok) throw new Error('Problem fetching data')
     
     const data = await res.json();
 
